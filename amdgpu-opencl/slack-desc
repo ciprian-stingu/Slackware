@@ -13,7 +13,8 @@ opencl-amd: This package is intended to work along with the free amdgpu stack.
 opencl-amd:
 opencl-amd:
 opencl-amd:
+opencl-amd: Homepage:  https://support.amd.com/en-us/kb-articles/Pages/
+opencl-amd: AMDGPU-PRO-Driver-for-Linux-Release-Notes.aspx
 opencl-amd:
 opencl-amd:
-opencl-amd: Homepage:  https://www.amd.com/en/support
 opencl-amd:
