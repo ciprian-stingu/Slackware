@@ -5,8 +5,8 @@
 # make exactly 11 lines for the formatting to be correct.  It's also
 # customary to leave one space after the ':'.
 
-             |-----handy-ruler----------------------------------------------------|
-opencl-amd: opencl-amd
+          |-----handy-ruler------------------------------------------------------|
+opencl-amd: opencl-amd (AMD OpenCL driver)
 opencl-amd:
 opencl-amd: ROCr OpenCL stack, supports Vega 10 and later products
 opencl-amd: - Legacy OpenCL stack (Proprietary), supports legacy products
