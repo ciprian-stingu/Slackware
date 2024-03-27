@@ -13,7 +13,7 @@ opencl-amd: - Legacy OpenCL stack (Proprietary), supports legacy products
 opencl-amd: older than Vega 10 - This package is intended to work
 opencl-amd: along with the free amdgpu stack.
 opencl-amd:
-opencl-amd: Homepage:  https://docs.amd.com/bundle/ROCm-Release-Notes-v5.2/
-opencl-amd: page/About_This_Document.html
+opencl-amd: Homepage:  https://rocm.docs.amd.com/en/latest/about/CHANGELOG.html
+opencl-amd: #rocm-6-0-2
 opencl-amd:
 opencl-amd:

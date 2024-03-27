@@ -1,0 +1,90 @@
+--- ./CMakeLists.txt
++++ ./CMakeLists.txt
+@@ -44,7 +44,7 @@
+ OFF )
+ 
+ find_package(LLVM REQUIRED HINTS "${LLVM_CMAKE_DIR}")
+-include(AddLLVM)
++#include(AddLLVM)
+ 
+ message( "LLVM version: ${LLVM_PACKAGE_VERSION}" )
+ 
+@@ -116,7 +116,78 @@
+   BitWriter
+   Core
+   Support
++  IrReader
+ )
++
++include(AddFileDependencies)
++
++function(llvm_check_source_file_list)
++  set(listed ${ARGN})
++  file(GLOB globbed *.cpp)
++  foreach(g ${globbed})
++    get_filename_component(fn ${g} NAME)
++    list(FIND listed ${fn} idx)
++    if( idx LESS 0 )
++      message(SEND_ERROR "Found unknown source file ${g}
++Please update ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt\n")
++    endif()
++  endforeach()
++endfunction(llvm_check_source_file_list)
++
++function(llvm_process_sources OUT_VAR)
++  set( sources ${ARGN} )
++  llvm_check_source_file_list( ${sources} )
++  # Create file dependencies on the tablegenned files, if any.  Seems
++  # that this is not strictly needed, as dependencies of the .cpp
++  # sources on the tablegenned .inc files are detected and handled,
++  # but just in case...
++  foreach( s ${sources} )
++    set( f ${CMAKE_CURRENT_SOURCE_DIR}/${s} )
++    add_file_dependencies( ${f} ${TABLEGEN_OUTPUT} )
++  endforeach(s)
++  if( MSVC_IDE )
++    # This adds .td and .h files to the Visual Studio solution:
++    add_td_sources(sources)
++    add_header_files(sources)
++  endif()
++
++  # Set common compiler options:
++  if( NOT LLVM_REQUIRES_EH )
++    if( LLVM_COMPILER_IS_GCC_COMPATIBLE )
++      add_definitions( -fno-exceptions )
++    elseif( MSVC )
++      llvm_replace_compiler_option(CMAKE_CXX_FLAGS "/EHsc" "/EHs-c-")
++      add_definitions( /D_HAS_EXCEPTIONS=0 )
++    endif()
++  endif()
++  if( NOT LLVM_REQUIRES_RTTI )
++    if( LLVM_COMPILER_IS_GCC_COMPATIBLE )
++      llvm_replace_compiler_option(CMAKE_CXX_FLAGS "-frtti" "-fno-rtti")
++    elseif( MSVC )
++      llvm_replace_compiler_option(CMAKE_CXX_FLAGS "/GR" "/GR-")
++    endif()
++  endif()
++
++  set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}" PARENT_SCOPE )
++  set( ${OUT_VAR} ${sources} PARENT_SCOPE )
++endfunction(llvm_process_sources)
++
++macro(add_llvm_executable name)
++  llvm_process_sources( ALL_FILES ${ARGN} )
++  if( EXCLUDE_FROM_ALL )
++    add_executable(${name} EXCLUDE_FROM_ALL ${ALL_FILES})
++  else()
++    add_executable(${name} ${ALL_FILES})
++  endif()
++  set(EXCLUDE_FROM_ALL OFF)
++  target_link_libraries( ${name} ${LLVM_USED_LIBS} )
++  llvm_config( ${name} ${LLVM_LINK_COMPONENTS} )
++  if( LLVM_COMMON_DEPENDS )
++    add_dependencies( ${name} ${LLVM_COMMON_DEPENDS} )
++  endif( LLVM_COMMON_DEPENDS )
++  link_system_libs( ${name} )
++endmacro(add_llvm_executable name)
++
+ add_llvm_executable( prepare_builtins utils/prepare-builtins.cpp )
+ target_compile_definitions( prepare_builtins PRIVATE ${LLVM_VERSION_DEFINE} )
+ # These were not properly reported in early LLVM and we don't need them

@@ -1,0 +1,78 @@
+PRGNAM="opencl-amd"
+VERSION="6.0.2"
+HOMEPAGE="https://rocm.docs.amd.com/en/latest/about/CHANGELOG.html#rocm-6-0-2"
+DOWNLOAD=""
+MD5SUM=""
+DOWNLOAD_x86_64="https://repo.radeon.com/amdgpu/6.0.2/ubuntu/pool/main/libd/libdrm-amdgpu/libdrm-amdgpu-amdgpu1_2.4.116.60002-1718217.22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocm-core/rocm-core_6.0.2.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/c/comgr/comgr_2.6.0.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/h/hipcc/hipcc_1.0.0.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/h/hip-dev/hip-dev_6.0.32831.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/h/hip-doc/hip-doc_6.0.32831.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/h/hip-samples/hip-samples_6.0.32831.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/h/hsakmt-roct-dev/hsakmt-roct-dev_20231016.2.245.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/h/hsa-rocr/hsa-rocr_1.12.0.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/h/hsa-rocr-dev/hsa-rocr-dev_1.12.0.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocminfo/rocminfo_1.0.0.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/h/hip-runtime-amd/hip-runtime-amd_6.0.32831.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocm-device-libs/rocm-device-libs_1.0.0.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocm-language-runtime/rocm-language-runtime_6.0.2.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocm-hip-runtime/rocm-hip-runtime_6.0.2.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocm-ocl-icd/rocm-ocl-icd_2.0.0.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocm-opencl/rocm-opencl_2.0.0.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocm-opencl-dev/rocm-opencl-dev_2.0.0.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocm-opencl-runtime/rocm-opencl-runtime_6.0.2.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocm-clang-ocl/rocm-clang-ocl_0.5.0.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/o/openmp-extras-runtime/openmp-extras-runtime_17.60.0.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocm-smi-lib/rocm-smi-lib_6.0.0.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocm-cmake/rocm-cmake_0.11.0.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocm-dbgapi/rocm-dbgapi_0.71.0.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocm-debug-agent/rocm-debug-agent_2.0.3.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocm-gdb/rocm-gdb_13.2.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocm-utils/rocm-utils_6.0.2.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocprofiler/rocprofiler_2.0.60002.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocprofiler-dev/rocprofiler-dev_2.0.60002.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocprofiler-plugins/rocprofiler-plugins_2.0.60002.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/roctracer/roctracer_4.1.60002.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/roctracer-dev/roctracer-dev_4.1.60002.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/r/rocm-dev/rocm-dev_6.0.2.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/rocm/apt/6.0.2/pool/main/h/hsa-amd-aqlprofile/hsa-amd-aqlprofile_1.0.0.60002.60002-115~22.04_amd64.deb \
+                 https://repo.radeon.com/amdgpu/5.7.1/ubuntu/pool/proprietary/o/opencl-legacy-amdgpu-pro/opencl-legacy-amdgpu-pro-icd_23.20-1664987.22.04_amd64.deb"
+MD5SUM_x86_64="99465afe794356e7f321e3c26c19655b \
+               f32eda12d21f78e360e9532077bdb0b3 \
+               2c76c0755b828e0093ebc5fe5b58048e \
+               a883cd484648ea8a9cc426669da9a69a \
+               45ed91e637a52d4b7a0e1ab1de1f7979 \
+               d8343b09d75395794bdbb917eb0bb108 \
+               5d0d30cec86319c546cf71201b7da613 \
+               31e0ab8659249f042a05733e39588bd3 \
+               8a6c824401253b1c919c9a767326f91b \
+               b9c3e3746b4ed366a82a5d2856693433 \
+               5cb0a28f6f0c128fdb279e57ff0344bc \
+               c3b47c4eddc9ac65bcee3d9d95fc3d20 \
+               3ddcfb0300c64d45a23dcd4d2e46d12d \
+               68e9ba0ea3b2b35f8b5a893f0edf4d94 \
+               d244850c63a3d311592b36910db53038 \
+               6a07488d28a4f813e57df6bdf33e5c63 \
+               9a5dc360b814e47ea04a6b8862a0e046 \
+               4e36c56fcd26a4cd1879eb685036ca00 \
+               b6b1dac635ba2a9b826405d42e68d340 \
+               86a2010888b21ec93c88072b228a4056 \
+               22bbc987a2029674c1138ef74a1ded4b \
+               e57c9eae12242789c2eb9acd7655b974 \
+               f1ad724d8fed5a8a944916f7606186ad \
+               672cd4ded631a6c1f71a03a26980c2b4 \
+               57a1754316e68a319f88a5b0723f39a0 \
+               a70aafffa695ebdb4a8378b16bd6df27 \
+               9f56f343f41b66a506e8c939e4598f64 \
+               e7dc5c76ae538ee21a063373fbdfb818 \
+               5a7d4baf1af5da87ef9a6f5020522197 \
+               28d73f2df24bc6155a9f598cff17a394 \
+               0be10356ad75348b8c25520a9a90f977 \
+               b4cda35bc450d2d29fc55c259a1b9c27 \
+               285d0be91c46e1b5aba6e09322cc41c3 \
+               72e06a1fa4c3036e7de91b2f2c357ac2 \
+               f4178bff8ec0134e544b355fc330550e"
+REQUIRES="GLIBC 2.34"
+MAINTAINER="Ciprian Stingu"
+EMAIL="ciprian dot stingu at gmail dot com"
